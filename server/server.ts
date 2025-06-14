@@ -8,20 +8,17 @@ config();
 const app = express();
 const port = process.env.PORT || 3812;
 
-// Get current directory path
-const currentDir = __dirname;
-
 // Serve static files from React build
-app.use(express.static(path.join(currentDir, 'client')));
+app.use(express.static(path.join(__dirname, 'client')));
 
 // Fallback route for client-side routing
 app.get('*', (req: Request, res: Response) => {
-  res.sendFile(path.join(currentDir, 'client', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client', 'index.html'));
 });
 
 // Start the server
 app.listen(port, () => {
   console.log(`✅ Server running on port ${port}`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`📁 Serving from: ${path.join(currentDir, 'client')}`);
+  console.log(`📁 Serving from: ${path.join(__dirname, 'client')}`);
 });
