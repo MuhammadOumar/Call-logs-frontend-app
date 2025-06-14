@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc && cp -R node_modules/express/lib dist/node_modules/express/lib",
+    "build": "tsc && mkdir -p dist/node_modules && cp -R node_modules/express dist/node_modules/",
     "start": "NODE_ENV=production node dist/server.js",
     "postinstall": "npm install @types/express"
   },
