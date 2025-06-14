@@ -7,8 +7,10 @@ config();
 const app = express();
 const port = process.env.PORT || 3812;
 
+// Serve static files
 app.use(express.static(path.join(__dirname, 'client')));
 
+// Fallback route
 app.use((req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, 'client', 'index.html'));
 });
