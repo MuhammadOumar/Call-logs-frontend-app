@@ -5,7 +5,7 @@
       "heroku-postbuild": "cd client && npm install --include=dev && npm run build && cd ../server && npm install && npm run build",
       "start": "node server/dist/server.js"
     },
-    "cacheDirectories": ["client/node_modules", "server/node_modules"],
+    "cacheDirectories": ["client/node_modules"],
     "engines": {
       "node": "20.x"
     }
