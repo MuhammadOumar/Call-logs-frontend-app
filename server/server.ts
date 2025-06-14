@@ -1,24 +1,27 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import path from 'path';
 import { config } from 'dotenv';
+import cors from 'cors';
 
-// Load environment variables
 config();
 
 const app = express();
 const port = process.env.PORT || 3812;
 
-// Serve static files from React build
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
+}));
 
-// Fallback route for client-side routing
-app.get('*', (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, 'client', 'index.html'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 });
 
-// Start the server
 app.listen(port, () => {
   console.log(`✅ Server running on port ${port}`);
-  console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`📁 Serving from: ${path.join(__dirname, 'client')}`);
 });
