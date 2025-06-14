@@ -16,12 +16,15 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '../../client/dist')));
+
+const clientPath = path.join(__dirname, '../../client/dist');
+app.use(express.static(clientPath));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../../client/dist', 'index.html'));
+  res.sendFile(path.join(clientPath, 'index.html'));
 });
 
 app.listen(port, () => {
   console.log(`✅ Server running on port ${port}`);
+  console.log(`📁 Serving from: ${clientPath}`);
 });
