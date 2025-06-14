@@ -2,10 +2,13 @@
     "name": "call-logs-app",
     "version": "1.0.0",
     "scripts": {
-      "heroku-postbuild": "cd client && npm install && npm run build",
-      "start": "cd server && npm install && npm run start"
+      "heroku-postbuild": "cd client && npm install && npm run build && cd ../server && npm install && npm run build",
+      "start": "node server/dist/server.js"
     },
-    "cacheDirectories": ["client/node_modules", "server/node_modules"],
+    "cacheDirectories": [
+      "client/node_modules",
+      "server/node_modules"
+    ],
     "engines": {
       "node": "20.x"
     }
