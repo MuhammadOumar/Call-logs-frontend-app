@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc && mkdir -p dist/node_modules && cp -R node_modules/express dist/node_modules/",
+    "build": "tsc",
     "start": "NODE_ENV=production node dist/server.js",
     "postinstall": "npm install @types/express"
   },
@@ -17,8 +17,7 @@
     "cors": "^2.8.5",
     "debug": "^4.3.4",
     "dotenv": "^16.3.1",
-    "express": "^4.19.2",
-    "body-parser": "^1.20.2"
+    "express": "^4.19.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
