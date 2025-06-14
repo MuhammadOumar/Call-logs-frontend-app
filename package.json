@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "scripts": {
       "heroku-postbuild": "cd client && npm install --include=dev && npm run build && cd ../server && npm install --include=dev && npm run build",
-      "start": "cd server && npm start"
+      "start": "cd server && node dist/server.js"
     },
     "cacheDirectories": ["client/node_modules"],
     "engines": {
